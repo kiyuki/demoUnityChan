@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorMove.Plugins", "FloorMove.Plugins.csproj", "{6EF47DEE-9828-1B04-2614-D42A11D4A96E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorMove", "FloorMove.csproj", "{E5268355-62D8-BD4F-7388-CC4420B77004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorMove.Editor.Plugins", "FloorMove.Editor.Plugins.csproj", "{80FF76CF-1281-7068-95C8-33A4F6A7D8D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorMove.Editor", "FloorMove.Editor.csproj", "{313FAD17-20B0-7D5C-FACE-60CBEA6D7D6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EF47DEE-9828-1B04-2614-D42A11D4A96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF47DEE-9828-1B04-2614-D42A11D4A96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF47DEE-9828-1B04-2614-D42A11D4A96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF47DEE-9828-1B04-2614-D42A11D4A96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5268355-62D8-BD4F-7388-CC4420B77004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5268355-62D8-BD4F-7388-CC4420B77004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5268355-62D8-BD4F-7388-CC4420B77004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5268355-62D8-BD4F-7388-CC4420B77004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FF76CF-1281-7068-95C8-33A4F6A7D8D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FF76CF-1281-7068-95C8-33A4F6A7D8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FF76CF-1281-7068-95C8-33A4F6A7D8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FF76CF-1281-7068-95C8-33A4F6A7D8D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313FAD17-20B0-7D5C-FACE-60CBEA6D7D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313FAD17-20B0-7D5C-FACE-60CBEA6D7D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313FAD17-20B0-7D5C-FACE-60CBEA6D7D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313FAD17-20B0-7D5C-FACE-60CBEA6D7D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
