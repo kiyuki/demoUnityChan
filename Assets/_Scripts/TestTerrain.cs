@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class TestTerrain : MonoBehaviour {
 
+    
+    private gameDirector_forDemo gameDirector;
     private Terrain terrain;
     [SerializeField]
     private Texture2D[] textures;
     public GroundManager tc;
     private TerrainData terrainData;
+    private float wavePreceedingBias;
+    private float waveChaseBias;
 
 
     const float pi = Mathf.PI;
@@ -16,9 +20,32 @@ public class TestTerrain : MonoBehaviour {
     int xBase, yBase;
     float[,] heights;
     float[,,] maps;
+
+    private float waveWidth;
+    private float amplitude = 1;
+    private float timeBias =1;
+    private float distanceBias=1;
+    private float attenuation=1;
+    private float cycle = 1;
+    private float time;
+    private bool flag;
+
+    
+
     // Use this for initialization
     void Start()
     {
+        gameDirector = GameObject.Find("MainDirector").GetComponent<gameDirector_forDemo>();
+        waveChaseBias = gameDirector.waveChaseBias;
+        wavePreceedingBias = gameDirector.wavePreceedingBias;
+        waveWidth = gameDirector.waveWidth;
+
+
+        amplitude = gameDirector.amplitude;
+        timeBias = gameDirector.timeBias;
+        distanceBias = gameDirector.distanceBias;
+        attenuation = gameDirector.attenuation;
+        cycle = gameDirector.cycle;
         GameObject light = GameObject.Find("Directional Light");
         light.GetComponent<Light>().color = Color.white;
         light.transform.localPosition = new Vector3(125, 100, 125);
@@ -78,10 +105,53 @@ public class TestTerrain : MonoBehaviour {
 
     private void Update()
     {
+        time += Time.deltaTime;
     }
 
-    public void setHeight(float t, float strength)
+    public void setHeight(float strength, bool unitychanLanding)
     {
+        if (gameDirector.heightChange == true) time = 0;
+        if (time > 7) gameDirector.maxHeight = 33;
+        
+        if (unitychanLanding)
+        {
+            flag = true;
+        }
+        if (flag == true)
+        {
+            for (int x = 0; x < terrainData.heightmapWidth; x++)
+            {
+                for (int y = 0; y < terrainData.heightmapHeight; y++)
+                {
+                    if (Mathf.Pow((x - 256) / 100f, 2) + Mathf.Pow((y - 256) / 100f, 2) > Mathf.Pow(time*wavePreceedingBias, 2))
+                    {
+                        heights[x, y] = 0;
+                    }
+                    else
+                    {
+                        heights[x, y] = Ripple((float)(x - 256) / 100f, (float)(y - 256) / 100f, time);
+                    }
+                    //heights[x, y] = Sine2DFunction((float)x / 10f, (float)y / 10f, Time.time);
+                    //
+                }
+            }
+            if (time >= waveWidth)
+            {
+                for (int x = 0; x < terrainData.heightmapWidth; x++)
+                {
+                    for (int y = 0; y < terrainData.heightmapHeight; y++)
+                    {
+                        if (Mathf.Pow((x - 256) / 100f, 2) + Mathf.Pow((y - 256) / 100f, 2) < Mathf.Pow(0.5f*(time*waveChaseBias - waveWidth), 2))
+                            heights[x, y] = 0;
+                    }
+                }
+            }
+            if (time >= 18.24) flag = false;
+
+        }
+
+        terrain.terrainData.SetHeights(0, 0, heights);
+        /*
         for (int x = 0; x < terrainData.heightmapWidth; x++)
         {
             for (int y = 0; y < terrainData.heightmapHeight; y++)
@@ -101,7 +171,7 @@ public class TestTerrain : MonoBehaviour {
                 //
             }
         }
-        terrain.terrainData.SetHeights(0, 0, heights);
+        */
     }
 
     public SplatPrototype[] getSplatProttypes(Texture2D[] texs)
@@ -110,6 +180,7 @@ public class TestTerrain : MonoBehaviour {
 
         for (int i = 0; i < texs.Length; i++)
         {
+            splayPrototypes[i] = new SplatPrototype();
             splayPrototypes[i] = new SplatPrototype();
             splayPrototypes[i].tileSize = Vector2.one*5;
             splayPrototypes[i].texture = texs[i];
@@ -137,14 +208,13 @@ public class TestTerrain : MonoBehaviour {
         return y;
     }
 
-    static float Ripple(float x, float z, float t)
+    public  float Ripple(float x, float z, float t)
     {
         float d = Mathf.Sqrt(x * x + z * z);
-        float y = Mathf.Sin(pi * (4f * d - Time.time));
+        float y = Mathf.Sin(cycle * pi * (4f * d * distanceBias - t * timeBias));
 
-        y /= (30f + 10f * d);
+        y /= (30f + 10f * d * attenuation);
         y /= (5*t+1f);
-        return y;
+        return y * amplitude;
     }
-
 }

@@ -3,45 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class waveUnityChan : MonoBehaviour {
-
-    public GameObject instance_terrain;
-    public GameObject mainDirector;
+    
+    public GameObject gameDirector_forDemo;
     public GameObject unitychan;
-    public float time;
-    public float maxHight;
-    public float strength;
-	// Use this for initialization
-	void Start () {
-        strength = 1;
-        instance_terrain = GameObject.Find("terrain");
-        mainDirector = GameObject.Find("MainDirector");
+    [SerializeField] SoundManager soundManager;
+
+    [SerializeField] AudioClip clip1;
+    [SerializeField] AudioClip clip2;
+    [SerializeField] AudioClip clip3;
+    [SerializeField] AudioClip clip4;
+    [SerializeField] AudioClip clip5;
+    [SerializeField] AudioClip clip6;
+
+    gameDirector_forDemo instance;
+    // Use this for initialization
+    void Start () {
+        gameDirector_forDemo = GameObject.Find("MainDirector");
         unitychan = GameObject.Find("unitychan");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        time += Time.deltaTime;
-        if( this.transform.localPosition.y > maxHight)
-        {
-            maxHight = this.transform.localPosition.y;
-        }
-        instance_terrain.GetComponent<TestTerrain>().setHeight(time, (maxHight-30.1f)*strength);
+        instance = gameDirector_forDemo.GetComponent<gameDirector_forDemo>();
+
+    }
+
+    private void PlaySfx()
+    {
+        soundManager.RandomizeSfx(clip1, clip2, clip3, clip4,clip5,clip6);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        time = 0;
-        mainDirector.GetComponent<GameDirector>().accelF = true;
-
-        Debug.Log("OK");
+        instance.accelF = true;
+        instance.time = 0; // for addforce.
+        PlaySfx();
         
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        mainDirector.GetComponent<GameDirector>().accelF = true;
-        maxHight = 0;
-        Debug.Log("OK2");
+        instance.accelFromStay = true;
+        
     }
 
 }

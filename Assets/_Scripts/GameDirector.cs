@@ -170,7 +170,7 @@ public class GameDirector : MonoBehaviour
         {
             trampolineMate.color = Color.blue;
         }
-
+        /*
         if (unitychan.transform.localPosition.y > Mathf.Min(30 + (unitychan.GetComponent<waveUnityChan>().maxHight-30)/10, 32.0f) )
         {
 
@@ -181,10 +181,11 @@ public class GameDirector : MonoBehaviour
                 _rigidbody.AddForce(new Vector3(0, sumOfMove*jumpBias, 0));
                 timeForDivide = 0;
                 sumOfMove = 0;
-                unitychan.GetComponent<waveUnityChan>().maxHight = 0;
+                //Funitychan.GetComponent<waveUnityChan>().maxHight = 0;
                 accelF = false;
              }
         }
+       */
     }
     
 
