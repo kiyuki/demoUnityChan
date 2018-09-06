@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitychanJump", "Assembly-CSharp-firstpass.csproj", "{51A41304-2C7D-F492-3923-5B456C4A43C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{51A41304-2C7D-F492-3923-5B456C4A43C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitychanJump", "Assembly-CSharp.csproj", "{16E554D4-50EA-4091-43E4-89D7A52807F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{16E554D4-50EA-4091-43E4-89D7A52807F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitychanJump", "Assembly-CSharp-Editor-firstpass.csproj", "{8075BFCF-88F0-49F4-31FC-EBEAE58620DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{8075BFCF-88F0-49F4-31FC-EBEAE58620DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitychanJump", "Assembly-CSharp-Editor.csproj", "{D66F7E4C-827D-9FF4-297E-08D53E690A40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{D66F7E4C-827D-9FF4-297E-08D53E690A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
